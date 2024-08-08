@@ -26,7 +26,8 @@ const Articles: React.FC = () => {
     dispatch({ 
         type: "UPDATE_ARTICLE",
         article
-     })
+     });
+     setUpdateForm(null);
   };
 
   const showUpdateForm = (article: IArticle) => {

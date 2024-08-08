@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 type Props = {
   saveArticle: (article: IArticle) => void;
@@ -8,9 +8,15 @@ type Props = {
 export const UpdateArticle: React.FC<Props> = ({ saveArticle, currentArticle }) => {
   const [article, setArticle] = React.useState<IArticle | null>(currentArticle);
 
+  useEffect(() => {
+    setArticle(currentArticle);
+  }, [currentArticle])
+
   const addArticle = (e: React.FormEvent) => {
     e.preventDefault();
-    saveArticle(article);
+    if (article) {
+      saveArticle(article);
+    }
   };
 
   const handleArticleData = (e: React.FormEvent<HTMLInputElement>) => {
@@ -34,7 +40,7 @@ export const UpdateArticle: React.FC<Props> = ({ saveArticle, currentArticle }) 
         placeholder="Body"
         onChange={handleArticleData}
         value={article?.body}></input>
-      <button onClick={addArticle} value={article?.title}>
+      <button type="submit">
         Update Article
       </button>
     </form>
