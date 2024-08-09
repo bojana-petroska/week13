@@ -38,7 +38,7 @@ const TestComponent = () => {
     return <p>an error happened: {error.message}</p>;
   }
 
-//   return <p>{JSON.stri + ngify(todo)}</p>;
+//   return <p>{JSON.stringify(todo)}</p>;
 
   return (
     todos && todos.map((todo) => (
